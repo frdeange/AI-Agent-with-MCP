@@ -1,0 +1,6 @@
+azure-ai-agents==1.1.0b4
+azure-ai-projects==1.0.0b12
+azure-identity==1.23.0
+python-dotenv==1.1.1
+mcp==1.11.0
+chainlit==2.6.0
