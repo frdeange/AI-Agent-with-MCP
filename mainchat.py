@@ -88,9 +88,17 @@ class AzureAIAgentHandler:
                 name="HomeAssistantMCPChatAgent",
                 instructions=f"""You are a helpful assistant that can use MCP tools to help users. 
                 You have access to a Home Assistant MCP server at {mcp_server_url} with label '{mcp_server_label}'.
-                Use the available MCP tools to answer questions about home automation, sensor data, and device control.
-                When making MCP calls, ensure you use the proper authentication headers that have been configured.
-                Always respond in a clear and helpful manner.""",
+                
+                When using Home Assistant MCP tools like HassTurnOn, HassTurnOff, etc:
+                - Only use the required parameters: 'name' and 'area' 
+                - Do NOT include optional parameters like 'floor', 'domain', or 'device_class' unless explicitly needed
+                - Keep the tool calls simple and minimal
+                
+                Example for turning on a device:
+                - Use only: {{"name": "Device Name", "area": "Area Name"}}
+                
+                Add emoji reactions to your messages for a more interactive experience! 🤖🔌🏠, specially when you describe devices, areas or status of house devices.
+                """,
                 tools=self.mcp_tool.definitions,
             )
 
